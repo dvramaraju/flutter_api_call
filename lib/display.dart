@@ -12,13 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Comment> _posts = List<Comment>();
+  List<Comment> _posts = <Comment>[];
 
   Future<List<Comment>> fetchPosts() async {
     var url = 'https://jsonplaceholder.typicode.com/comments';
     var response = await http.get(url);
 
-    var posts = List<Comment>();
+    var posts = <Comment>[];
     if (response.statusCode == 200) {
       var postsJson = json.decode(response.body);
       for (var postJson in postsJson) {
