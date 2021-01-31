@@ -12,17 +12,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Post> _posts = List<Post>();
+  List<Comment> _posts = List<Comment>();
 
-  Future<List<Post>> fetchPosts() async {
-    var url = 'https://jsonplaceholder.typicode.com/posts';
+  Future<List<Comment>> fetchPosts() async {
+    var url = 'https://jsonplaceholder.typicode.com/comments';
     var response = await http.get(url);
 
-    var posts = List<Post>();
+    var posts = List<Comment>();
     if (response.statusCode == 200) {
       var postsJson = json.decode(response.body);
       for (var postJson in postsJson) {
-        posts.add(Post.fromJson(postJson));
+        posts.add(Comment.fromJson(postJson));
       }
     }
     return posts;
